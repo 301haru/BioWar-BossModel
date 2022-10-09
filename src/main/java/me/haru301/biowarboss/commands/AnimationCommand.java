@@ -19,6 +19,9 @@ public class AnimationCommand
 
         builder.then(Commands.argument("state", IntegerArgumentType.integer()).executes((source) -> {
             int channel = IntegerArgumentType.getInteger(source, "state");
+            if(channel < 1 || channel > 8)
+                return -1;
+
             for(ServerPlayerEntity p : ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayers())
                 PacketHandler.INSTANCE.sendTo(new BossAnimationToClientPacket(channel), p.connection.getNetworkManager(), NetworkDirection.PLAY_TO_CLIENT);
             return 1;

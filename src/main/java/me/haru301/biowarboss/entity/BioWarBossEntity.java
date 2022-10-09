@@ -12,6 +12,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.potion.Effects;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -40,6 +41,12 @@ public class BioWarBossEntity extends AnimalEntity implements IAnimatable
 
     private <E extends IAnimatable>PlayState predicate(AnimationEvent<E> event)
     {
+        if(event.getController().getAnimationState() == AnimationState.Stopped)
+        {
+            ClientHandler.state = 1;
+        }
+
+
         if(ClientHandler.state == 1)
         {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss.idle", ILoopType.EDefaultLoopTypes.LOOP));
@@ -78,11 +85,6 @@ public class BioWarBossEntity extends AnimalEntity implements IAnimatable
         else if(ClientHandler.state == 8)
         {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss.death", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
-            return PlayState.CONTINUE;
-        }
-        else if(ClientHandler.state == 9)
-        {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss.walk", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
         }
         return PlayState.STOP;
