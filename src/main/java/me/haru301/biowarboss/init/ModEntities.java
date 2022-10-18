@@ -12,5 +12,5 @@ public class ModEntities
 {
     public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.ENTITIES, BioWarBoss.MOD_ID);
 
-    public static final RegistryObject<EntityType<BioWarBossEntity>> BOSS = REGISTER.register("boss", () -> EntityType.Builder.create(BioWarBossEntity::new, EntityClassification.CREATURE).size(5.0f, 5.0f).immuneToFire().build("boss"));
+    public static final RegistryObject<EntityType<BioWarBossEntity>> BOSS = REGISTER.register("boss", () -> EntityType.Builder.create(BioWarBossEntity::new, EntityClassification.CREATURE).size(0.1f, 0.1f).immuneToFire().build("boss"));
 }

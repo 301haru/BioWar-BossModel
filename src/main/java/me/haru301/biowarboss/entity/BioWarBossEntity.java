@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.potion.Effects;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import software.bernie.geckolib3.core.AnimationState;
@@ -45,8 +46,6 @@ public class BioWarBossEntity extends AnimalEntity implements IAnimatable
         {
             ClientHandler.state = 1;
         }
-
-
         if(ClientHandler.state == 1)
         {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.boss.idle", ILoopType.EDefaultLoopTypes.LOOP));
