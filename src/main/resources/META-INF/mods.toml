@@ -19,7 +19,7 @@ modId = "biowarboss" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
-version = "1.1.1" #mandatory
+version = "2.0" #mandatory
 # A display name for the mod
 displayName = "BioWarBoss" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
@@ -34,7 +34,7 @@ displayName = "BioWarBoss" #mandatory
 authors = "Haru301" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description = '''
-adding dummy bio war boss model
+lol
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.biowarboss]] #optional

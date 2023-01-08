@@ -1,13 +1,10 @@
 package me.haru301.biowarboss.entity;
 
-import me.haru301.biowarboss.BioWarBoss;
-import me.haru301.biowarboss.client.ClientHandler;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
@@ -15,7 +12,6 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -30,15 +26,14 @@ import javax.annotation.Nullable;
 public class RaniEntity extends AnimalEntity implements IAnimatable
 {
     private AnimationFactory factory = new AnimationFactory(this);
-
     private static final DataParameter<Integer> ANIMATIONSTATE = EntityDataManager.createKey(RaniEntity.class, DataSerializers.VARINT);
 
-    public int getAnimState()
+    private int getAnimState()
     {
         return this.getDataManager().get(ANIMATIONSTATE);
     }
 
-    public void setAnimState(int state)
+    private void setAnimState(int state)
     {
         this.getDataManager().set(ANIMATIONSTATE, state);
     }
