@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -70,6 +71,14 @@ public class RaniEntity extends AnimalEntity implements IAnimatable
                 .createMutableAttribute(Attributes.FOLLOW_RANGE, 1.0D);
     }
 
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float amount)
+    {
+        if(source.equals(DamageSource.OUT_OF_WORLD))
+            return super.attackEntityFrom(source, amount);
+        else return false;
+    }
+
     //Render thread
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
     {
@@ -119,14 +128,17 @@ public class RaniEntity extends AnimalEntity implements IAnimatable
                 return PlayState.CONTINUE;
             case 9:
                 event.getController().setAnimation(new AnimationBuilder()
-                        .addAnimation("throw_gift", ILoopType.EDefaultLoopTypes.PLAY_ONCE)
-                        .addAnimation("hand_gift_2", ILoopType.EDefaultLoopTypes.LOOP));
+                        .addAnimation("throw_gift", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
                 return PlayState.CONTINUE;
             case 10:
                 event.getController().setAnimation(new AnimationBuilder()
-                        .addAnimation("exclude", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
+                        .addAnimation("hand_gift_2", ILoopType.EDefaultLoopTypes.LOOP));
                 return PlayState.CONTINUE;
             case 11:
+                event.getController().setAnimation(new AnimationBuilder()
+                        .addAnimation("exclude", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
+                return PlayState.CONTINUE;
+            case 12:
                 event.getController().setAnimation(new AnimationBuilder()
                         .addAnimation("celebrate", ILoopType.EDefaultLoopTypes.LOOP));
                 return PlayState.CONTINUE;

@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -63,6 +64,14 @@ public class BoxEntity extends AnimalEntity implements IAnimatable
         return LivingEntity.registerAttributes()
                 .createMutableAttribute(Attributes.MAX_HEALTH, 5.0D)
                 .createMutableAttribute(Attributes.FOLLOW_RANGE, 1.0D);
+    }
+
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float amount)
+    {
+        if(source.equals(DamageSource.OUT_OF_WORLD))
+            return super.attackEntityFrom(source, amount);
+        else return false;
     }
 
     //Render thread
