@@ -11,6 +11,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
+@Deprecated
 public class AnimationCommand
 {
     public AnimationCommand(CommandDispatcher<CommandSource> dispatcher)

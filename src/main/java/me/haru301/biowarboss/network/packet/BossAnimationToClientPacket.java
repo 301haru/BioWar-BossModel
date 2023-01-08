@@ -13,6 +13,7 @@ import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 import java.util.function.Supplier;
 
+@Deprecated
 public class BossAnimationToClientPacket
 {
     private int state;

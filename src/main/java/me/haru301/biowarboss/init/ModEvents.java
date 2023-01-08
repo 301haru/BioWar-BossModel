@@ -3,6 +3,7 @@ package me.haru301.biowarboss.init;
 import me.haru301.biowarboss.BioWarBoss;
 import me.haru301.biowarboss.commands.AnimationCommand;
 import me.haru301.biowarboss.entity.BioWarBossEntity;
+import me.haru301.biowarboss.entity.RaniEntity;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,5 +16,6 @@ public class ModEvents
     public static void initAttributes(EntityAttributeCreationEvent event)
     {
         event.put(ModEntities.BOSS.get(), BioWarBossEntity.getAttributes().create());
+        event.put(ModEntities.RANI.get(), RaniEntity.getAttributes().create());
     }
 }
